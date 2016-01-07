@@ -1,0 +1,61 @@
+##Creacion de tablas para el proyecto
+CREATE DATABASE MSALVARO;
+
+CREATE USER 'msadmin'@'localhost' IDENTIFIED BY 'admin';
+
+GRANT ALL PRIVILEGES ON msalvaro . * to 'msadmin'@'localhost';
+
+USE MSALVARO;
+
+
+
+CREATE TABLE USUARIO (
+	nombre_usuario VARCHAR(20) PRIMARY KEY,
+	pass VARCHAR(50) NOT NULL,
+	nivel_adm TINYINT(1) NOT NULL,
+	fecha_registro DATE NOT NULL,
+	correo VARCHAR(50) NOT NULL,
+);
+
+
+CREATE TABLE LISTA (
+	id_lista INT AUTO_INCREMENT PRIMARY KEY,
+	nombre_usuariofk VARCHAR(20) NOT NULL,
+	nombre_lista VARCHAR(50) NOT NULL,
+	fecha_crea DATE NOT NULL,
+	FOREIGN KEY (nombre_usuariofk) 
+  REFERENCES USUARIO(nombre_usuario),
+);
+
+
+CREATE TABLE CANCION (
+	id_cancion INT AUTO_INCREMENT PRIMARY KEY,
+	nombre_cancion VARCHAR(20) NOT NULL,
+	album VARCHAR(30),
+	anio_salida DATE,
+	autor VARCHAR(30),
+	genero VARCHAR(30),
+	duracion TIMESTAMP,
+);
+
+
+CREATE TABLE COMENTARIO (
+	id_comentario INT AUTO_INCREMENT PRIMARY KEY,
+	fecha_entrada DATE NOT NULL,
+	contenido VARCHAR(30) NOT NULL,
+	id_cancionfk INT NOT NULL,
+	FOREIGN KEY (id_cancionfk) 
+  REFERENCES CANCION(id_cancion),
+);
+
+
+
+CREATE TABLE FORMA (
+	id_listafk INT NOT NULL,
+	id_cancionfk2 INT NOT NULL,
+	FOREIGN KEY (id_cancionfk2) 
+  REFERENCES CANCION(id_cancion),
+	FOREIGN KEY (id_listafk) 
+  REFERENCES LISTA(id_lista),
+);
+
