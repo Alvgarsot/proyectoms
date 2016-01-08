@@ -14,7 +14,7 @@ CREATE TABLE USUARIO (
 	pass VARCHAR(50) NOT NULL,
 	nivel_adm TINYINT(1) NOT NULL,
 	fecha_registro DATE NOT NULL,
-	correo VARCHAR(50) NOT NULL,
+	correo VARCHAR(50) NOT NULL UNIQUE,
 );
 
 
@@ -24,7 +24,7 @@ CREATE TABLE LISTA (
 	nombre_lista VARCHAR(50) NOT NULL,
 	fecha_crea DATE NOT NULL,
 	FOREIGN KEY (nombre_usuariofk) 
-  REFERENCES USUARIO(nombre_usuario),
+   REFERENCES USUARIO(nombre_usuario),
 );
 
 
@@ -53,6 +53,7 @@ CREATE TABLE COMENTARIO (
 CREATE TABLE FORMA (
 	id_listafk INT NOT NULL,
 	id_cancionfk2 INT NOT NULL,
+	num_cancion INT AUTO_INCREMENT NOT NULL,
 	FOREIGN KEY (id_cancionfk2) 
   REFERENCES CANCION(id_cancion),
 	FOREIGN KEY (id_listafk) 
