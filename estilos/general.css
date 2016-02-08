@@ -1,0 +1,138 @@
+/* ---ESTILOS GENERALES--- */
+body {
+
+    font-family: 'Dosis', sans-serif;
+    background-color: #E5E5DB;
+    height: 580px;
+}
+
+.cabecera {
+    height: 60px;
+    position: fixed;
+    background-color: #3C948B;
+    margin-top: 0px;
+    color: white;
+    text-align: center;
+    top: 0;
+    width: 100%;
+}
+#cabecera1 {
+height: 60px;
+float: left;
+width: 70%;
+}
+#cabecera1 img {
+height: 45px;
+float: left;
+width: 45px;
+margin-top: 7px;
+margin-left: 5px;
+}
+#cabecera2 {
+height: 60px;
+float: left;
+width: 30%;
+}
+#cabecera2 a {
+color: white;
+}
+.pie {
+    width: 100%;
+    height: 60px;
+    position: fixed;
+    background-color: #3C948B;
+    bottom: 0;
+ 
+}
+
+/* ---ESTILOS PARA EL LOGIN--- */
+
+.logform {
+    margin-left: 35%;
+    margin-top: 180px;
+    width: 30%;
+    height: 200px;
+   background-color: white;
+}
+.formcab {
+    width: auto;
+    height: 30px;
+    text-align: center;
+    background-color: #3C948B;
+    padding-top: 5px;
+    color: white;
+    
+}
+
+.formcont {
+    text-align: center;
+    padding-top: 30px;
+}
+
+/* ---ESTILOS PARA EL DISPLAY DE LISTAS DE REPRODUCCION--- */
+.listas {
+    float: left;
+    margin-top: 100px;
+    margin-left: 30px;
+    width: 30%;
+    height: 400px;
+    background-color: white;   
+}
+.liscab {
+     width: auto;
+    height: 30px;
+    text-align: center;
+    background-color: #607D8B;
+    padding-top: 5px;
+    color: white;
+}
+.liscont {
+    text-align: center;
+    padding-top: 20px;
+    background-color: #D96171;
+    height: 345px;
+}
+.listausu {
+margin-left:-40px;
+margin-top: -18px;
+}
+.listausu li {
+list-style-type: none;
+    margin-bottom: 2px;
+height: 30px;
+padding-top: 5px;
+cursor: pointer;
+}
+.listausu li:hover {
+background-color: #EF5350;
+}
+.listausu li img {
+    height: 30px;
+    width: 30px;
+    margin-left: 5px;
+    float: left;
+}
+/* ---ESTILOS PARA EL DISPLAY DE CANCIONES DE LAS LISTAS--- */
+.canciones {
+    float: left;
+    margin-left: 30px;
+    margin-top: 100px;
+    width: 30%;
+    height: 400px;
+    background-color: white;   
+}
+
+.cancab {
+     width: auto;
+    height: 30px;
+    text-align: center;
+    background-color: #607D8B;
+    padding-top: 5px;
+    color: white;
+}
+.cancont {
+    text-align: center;
+    padding-top: 20px;
+    background-color: #D96171;
+    height: 345px;
+}
