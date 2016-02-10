@@ -13,7 +13,7 @@
     <title></title>
     <link rel="stylesheet" type="text/css" href="../estilos/general.css">
       <link href='https://fonts.googleapis.com/css?family=Dosis:600' rel='stylesheet' type='text/css'>
-      <!-- ---------SCRIPT PARA PLAYLIST AUTOPLAY--------- -->
+      <!-- ---------SCRIPT PARA PLAYLIST AUTOPLAY--------- 
       <script type="text/javascript">
 
 function setup() {
@@ -29,6 +29,7 @@ function setup() {
         }, false);
 
 }
+------------------- -->
 </script>
   </head>
   <body onLoad="setup();">
@@ -53,10 +54,9 @@ function setup() {
               if ($result->num_rows===0) {
                 echo "No existe tal usuario";
               } else {
-                //THE LOOP CONTINUES WHILE WE HAVE ANY OBJECT (Query Row) LEFT
                  while($obj = $result->fetch_object()) {
                 
-                     echo "<li><img src='../img/lista.png'><img src='../img/anadir2.png'> ".$obj->nombre_lista." <span class='fechacr'><span> </li>";
+                     echo "<a href='usuario.php?id=$obj->id_lista'><li><img src='../img/lista.png'><img src='../img/anadir2.png'> ".$obj->nombre_lista." <span class='fechacr'></span> </li></a>";
               
                  }
               }
@@ -64,6 +64,7 @@ function setup() {
             echo "Consulta equivocada";
             var_dump($result);
           }
+
 ?>
               </ul>
         </div>
@@ -72,10 +73,38 @@ function setup() {
       <div class="canciones">
           <div class="cancab">Canciones:</div>
           
-          <div class="cancont">
-            <p>Primero elige tu lista de reproducción</p>
+          <div class="cancont"><?php
+/*       ------------- SEGUNDA CONSULTA --------------  */
+if (isset($_GET["id"])) {
+$connection2 = new mysqli("localhost", "msadmin", "admin", "msalvaro");
+    $id=$_GET["id"];
+        if ($result2 = $connection2->query("SELECT num_cancion, nombre_cancion FROM lista , usuario, forma, cancion WHERE lista.nombre_usuariofk=usuario.nombre_usuario AND lista.id_lista=forma.id_listafk AND cancion.id_cancion=forma.id_cancionfk2 AND nombre_usuario='".$_SESSION['usuario']."' AND id_lista='".$_GET['id']."';")) {
+              if ($result2->num_rows===0) {
+                echo "Lista vacía";
+              } else {
+                 while($obj2 = $result2->fetch_object()) {
+                     $cancion=array('id'=>$_GET['id'],'cancion'=>$obj2->nombre_cancion);
+                     $url=http_build_query($cancion);
+                     $url_final="usuario.php?".$url;
+                    echo "<li><a href='$url_final'><img src='../img/play.png'></a>".$obj2->nombre_cancion."</li>";
+                /*     echo "<li><a href='usuario.php?id='".$_GET['id']."&&cancion=".$obj2->nombre_cancion."'><img src='../img/play.png'></a>".$obj2->nombre_cancion."</li>"; */
+                 }
+              }
+          } else {
+            echo "Consulta equivocada";
+            var_dump($result2);
+          }
+}
+else {
+ /* --------------------------------------------------- */
+            echo "<p>Primero elige tu lista de reproducción</p>";
+}
+              ?>
         </div>
       </div>
-      <div class="pie"><audio id="audio" src="m1.mp3" controls="controls"><p>Este navegador es compatible con nuestro reproductor de música, rogamos lo intente de nuevo en otro navegador</p></audio></div>
+      <div class="pie"><?php    if (isset($_GET["cancion"])) {
+echo "<audio id='audio' src='../../aver/".$_GET['cancion']."' controls='controls'><p>Este navegador es compatible con nuestro reproductor de música, rogamos lo intente de nuevo en otro navegador</p></audio>";
+              }
+          ?></div>
   </body>
 </html>

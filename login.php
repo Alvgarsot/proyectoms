@@ -28,8 +28,6 @@
               printf("Conexión fallida: %s\n", $connection->connect_error);
               exit();
           }
-
-         
           $query = $connection->prepare("SELECT * FROM usuario WHERE nombre_usuario=? AND pass=md5(?)");
           $query->bind_param("ss",$_POST["usuario"],$_POST["pass"]);
           if ($query->execute()) {
