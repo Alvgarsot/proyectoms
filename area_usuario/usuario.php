@@ -49,6 +49,7 @@ function setup() {
           header("location: ../login.php");
           }
              $connection = new mysqli("localhost", "msadmin", "admin", "msalvaro");
+$connection->set_charset("utf8");
         if ($result = $connection->query("SELECT * FROM lista join usuario on lista.nombre_usuariofk=usuario.nombre_usuario
             WHERE nombre_usuario='".$_SESSION['usuario']."';")) {
               if ($result->num_rows===0) {
@@ -70,13 +71,17 @@ function setup() {
         </div>
       </div>
       <!-- -----------------CANCIONES----------------- -->
+    
       <div class="canciones">
           <div class="cancab">Canciones:</div>
+         
           
           <div class="cancont"><?php
 /*       ------------- SEGUNDA CONSULTA --------------  */
 if (isset($_GET["id"])) {
 $connection2 = new mysqli("localhost", "msadmin", "admin", "msalvaro");
+    $connection2->set_charset("utf8");
+    
     $id=$_GET["id"];
         if ($result2 = $connection2->query("SELECT num_cancion, nombre_cancion FROM lista , usuario, forma, cancion WHERE lista.nombre_usuariofk=usuario.nombre_usuario AND lista.id_lista=forma.id_listafk AND cancion.id_cancion=forma.id_cancionfk2 AND nombre_usuario='".$_SESSION['usuario']."' AND id_lista='".$_GET['id']."';")) {
               if ($result2->num_rows===0) {
