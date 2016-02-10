@@ -53,7 +53,7 @@ $connection->set_charset("utf8");
         if ($result = $connection->query("SELECT * FROM lista join usuario on lista.nombre_usuariofk=usuario.nombre_usuario
             WHERE nombre_usuario='".$_SESSION['usuario']."';")) {
               if ($result->num_rows===0) {
-                echo "No existe tal usuario";
+                echo "No tiene lista";
               } else {
                  while($obj = $result->fetch_object()) {
                 
@@ -83,7 +83,7 @@ $connection2 = new mysqli("localhost", "msadmin", "admin", "msalvaro");
     $connection2->set_charset("utf8");
     
     $id=$_GET["id"];
-        if ($result2 = $connection2->query("SELECT num_cancion, nombre_cancion FROM lista , usuario, forma, cancion WHERE lista.nombre_usuariofk=usuario.nombre_usuario AND lista.id_lista=forma.id_listafk AND cancion.id_cancion=forma.id_cancionfk2 AND nombre_usuario='".$_SESSION['usuario']."' AND id_lista='".$_GET['id']."';")) {
+        if ($result2 = $connection2->query("SELECT num_cancion, nombre_cancion FROM lista , usuario, forma, cancion WHERE lista.nombre_usuariofk=usuario.nombre_usuario AND lista.id_lista=forma.id_listafk AND cancion.id_cancion=forma.id_cancionfk2 AND nombre_usuario='".$_SESSION['usuario']."' AND id_lista='".$_GET['id']."' ORDER BY num_cancion asc;")) {
               if ($result2->num_rows===0) {
                 echo "Lista vacía";
               } else {
@@ -92,7 +92,6 @@ $connection2 = new mysqli("localhost", "msadmin", "admin", "msalvaro");
                      $url=http_build_query($cancion);
                      $url_final="usuario.php?".$url;
                     echo "<li><a href='$url_final'><img src='../img/play.png'></a>".$obj2->nombre_cancion."</li>";
-                /*     echo "<li><a href='usuario.php?id='".$_GET['id']."&&cancion=".$obj2->nombre_cancion."'><img src='../img/play.png'></a>".$obj2->nombre_cancion."</li>"; */
                  }
               }
           } else {
