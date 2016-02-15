@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <script src="../librerias/jquery-2.2.0.min.js"></script>
+      <script src="librerias/jquery-2.2.0.min.js"></script>
     <script src="./librerias/jquery-ui-1.11.4.custom/jquery-ui.js"></script>
     <script rel="stylesheet" href="./librerias/jquery-ui-1.11.4.custom/jquery-ui.css"></script>
     <title></title>

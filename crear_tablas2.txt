@@ -32,7 +32,7 @@ CREATE TABLE CANCION (
 	id_cancion INT AUTO_INCREMENT PRIMARY KEY,
 	nombre_cancion VARCHAR(100) NOT NULL,
 	album VARCHAR(50),
-	anio_salida DATE,
+	anio_salida YEAR,
 	autor VARCHAR(50),
 	genero VARCHAR(50),
 	duracion TIME

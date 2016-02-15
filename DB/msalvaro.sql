@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-02-2016 a las 23:49:09
+-- Tiempo de generación: 15-02-2016 a las 02:05:56
 -- Versión del servidor: 5.6.21
 -- Versión de PHP: 5.6.3
 
@@ -30,27 +30,33 @@ CREATE TABLE IF NOT EXISTS `cancion` (
 `id_cancion` int(11) NOT NULL,
   `nombre_cancion` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `album` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL,
-  `anio_salida` date DEFAULT NULL,
+  `anio_salida` year(4) DEFAULT NULL,
   `autor` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL,
   `genero` varchar(50) DEFAULT NULL,
   `duracion` time NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `cancion`
 --
 
 INSERT INTO `cancion` (`id_cancion`, `nombre_cancion`, `album`, `anio_salida`, `autor`, `genero`, `duracion`) VALUES
-(1, '01_So_What.mp3', 'Kind of Blue', '2016-02-09', 'Miles Davis', 'Jazz', '00:00:00'),
-(2, '02_Freddie.mp3', 'Kind of Blue', '2016-02-09', 'Miles Davis', 'Jazz', '00:00:00'),
-(3, '03_Blue.mp3', 'Kind of Blue', NULL, 'Miles Davis', 'Jazz', '20:02:46'),
-(4, '04_All_Blues.mp3', 'Kind of Blue', NULL, 'Miles Davis', 'Jazz', '20:02:46'),
-(5, '05_Flamen.mp3', 'Kind of Blue', NULL, 'Miles Davis', 'Jazz', '20:03:01'),
-(6, 'Fumando_lala.mp3', NULL, NULL, NULL, NULL, '22:15:48'),
-(7, 'Asi_lo_hacemos.mp3', NULL, NULL, NULL, NULL, '22:16:57'),
-(8, 'Real_reconoce.mp3', NULL, NULL, NULL, NULL, '22:19:00'),
-(9, 'Sienta_bien.mp3', NULL, NULL, NULL, NULL, '22:20:06'),
-(10, 'Demasiados_MCs.mp3', NULL, NULL, NULL, NULL, '22:22:53');
+(1, '01 So What.mp3', 'Kind of Blue', 1959, 'Miles Davis', 'Jazz', '00:09:25'),
+(2, '02 Freddie Freeloader.mp3', 'Kind of Blue', 1959, 'Miles Davis', 'Jazz', '00:09:48'),
+(3, '03 Blue in Green.mp3', 'Kind of Blue', 1959, 'Miles Davis', 'Jazz', '00:05:39'),
+(4, '04 All Blues.mp3', 'Kind of Blue', 1959, 'Miles Davis', 'Jazz', '00:11:35'),
+(5, '05 Flamenco Sketches.mp3', 'Kind of Blue', 1959, 'Miles Davis', 'Jazz', '00:09:27'),
+(6, 'Perfect Makeout Music.mp3', 'Wake', 2005, 'Trio Toykeat', 'Jazz', '00:06:38'),
+(7, 'Voyage.mp3', 'Wake', 2005, 'Trio Toykeat', 'Jazz', '00:04:56'),
+(8, 'End of the First Set.mp3', 'Wake', 2005, 'Trio Toykeat', 'Jazz', '00:03:48'),
+(9, 'Final Fantasy.mp3', 'Wake', 2005, 'Trio Toykeat', 'Jazz', '00:05:44'),
+(10, 'In a Sentimental Mood.mp3', 'Wake', 2005, 'Trio Toykeat', 'Jazz', '00:04:55'),
+(11, 'Almost.mp3', 'Wake', 2005, 'Trio Toykeat', 'Jazz', '00:05:54'),
+(12, 'Beba.mp3', 'Wake', 2005, 'Trio Toykeat', 'Jazz', '00:05:50'),
+(13, 'You and Me.mp3', 'Wake', 2005, 'Trio Toykeat', 'Jazz', '00:07:52'),
+(14, 'Third Ball.mp3', 'Wake', 2005, 'Trio Toykeat', 'Jazz', '00:06:09'),
+(15, 'Sir Vival.mp3', 'Wake', 2005, 'Trio Toykeat', 'Jazz', '00:05:25'),
+(16, 'Insane in Seine.mp3', 'Wake', 2005, 'Trio Toykeat', 'Jazz', '00:07:12');
 
 -- --------------------------------------------------------
 
@@ -76,6 +82,17 @@ CREATE TABLE IF NOT EXISTS `forma` (
   `id_cancionfk2` int(11) NOT NULL,
   `num_cancion` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `forma`
+--
+
+INSERT INTO `forma` (`id_listafk`, `id_cancionfk2`, `num_cancion`) VALUES
+(3, 2, 2),
+(3, 3, 3),
+(3, 4, 4),
+(3, 5, 5),
+(3, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -166,7 +183,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `cancion`
 --
 ALTER TABLE `cancion`
-MODIFY `id_cancion` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+MODIFY `id_cancion` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT de la tabla `comentario`
 --
