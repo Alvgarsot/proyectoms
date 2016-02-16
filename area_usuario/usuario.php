@@ -1,6 +1,7 @@
 
 <?php
   session_start();
+unset($_SESSION['id']);
 // ----------------- PARA LA LISTA DE REPRODUCCION       -----------------------
                   if (isset($_GET['cancion'])) {
 $connection3 = new mysqli("localhost", "msadmin", "admin", "msalvaro");

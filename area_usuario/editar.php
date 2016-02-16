@@ -6,6 +6,7 @@
          }
 /* ------------- IMPIDE QUE OTROS USUARIOS EDITEN LISTAS AJENAS Y DE CAMINO GUARDAMOS LISTA------------------- */
 if (isset($_GET['id'])) {
+    $_SESSION['id']=$_GET['id'];
 $connection = new mysqli("localhost", "msadmin", "admin", "msalvaro");
     $connection->set_charset("utf8");
     if ($result2=$connection->query("SELECT * FROM lista join usuario on lista.nombre_usuariofk=usuario.nombre_usuario
@@ -16,13 +17,13 @@ $connection = new mysqli("localhost", "msadmin", "admin", "msalvaro");
               } else {
          while($obj = $result2->fetch_object()) {
                     $nlista=$obj->nombre_lista;
-                 }
-    }
- }
-          } else {
+                                                }
+                    }
+                                }
+                    } else {
             echo "Consulta equivocada";
          header("Location: usuario.php");
-          }
+                            }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,20 +40,22 @@ $connection = new mysqli("localhost", "msadmin", "admin", "msalvaro");
   <body>
       <div class="cabecera">
           <div id="cabecera1">
-          <img src="../img/headphones.png"><p>Edición de la lista <?php echo $nlista; ?></p></div>
+          <img src="../img/headphones.png"><p>Edición de la lista <?php 
+echo $nlista; 
+?></p></div>
           <div id="cabecera2"><p><a href="cierre.php">Cerrar sesión</a> &nbsp &nbsp &nbsp <a href="usuario.php">Volver</a></p></div>
       </div>
      
       <div class="editarlista">
                <div class="editn">
-                   <form action="editar.php" method="post">
+                   <form action="accion.php" method="post">
                    <p>Nuevo nombre de lista: &nbsp &nbsp &nbsp &nbsp &nbsp <input type="text" name="nlista" required> &nbsp &nbsp &nbsp &nbsp <input type="submit" value="Renombrar lista"></p>
                    </form>
                </div>
           <div class="editc">
               <p>Selecciona las canciones que deseas añadir a la lista: </p>
-              <form action="editar.php" method="post">
-        <select multiple>
+              <form action="accion.php" method="post">
+        <select name="incluye[]" multiple>
             <!-- -------------------- BLOQUE PARA SACAR TODAS LAS CANCIONES MENOS LAS DE LA LISTA -------------------- -->
             <?php
 if ($result3=$connection->query("SELECT * FROM cancion WHERE cancion.id_cancion NOT IN (SELECT id_cancion FROM cancion, forma WHERE cancion.id_cancion=forma.id_cancionfk2 AND id_listafk='".$_GET['id']."');")) {
@@ -72,8 +75,8 @@ if ($result3=$connection->query("SELECT * FROM cancion WHERE cancion.id_cancion 
         </div>
       <div class="editc2">
           <p>Selecciona las canciones que deseas quitar de la lista: </p>
-              <form action="editar.php" method="post">
-        <select multiple>
+              <form action="accion.php" method="post">
+        <select name="quita[]" multiple>
             <?php
 if ($result4=$connection->query("SELECT * FROM cancion, forma WHERE cancion.id_cancion=forma.id_cancionfk2 AND id_listafk='".$_GET['id']."' ORDER BY num_cancion asc;")) {
      if ($result4->num_rows===0) {
@@ -86,14 +89,11 @@ if ($result4=$connection->query("SELECT * FROM cancion, forma WHERE cancion.id_c
  }
 ?>
 </select>
-        
             </p>
             <p><input type="submit" value="Quitar canción/es"></p>
 </form>
-        
         </div>
       </div>
-
       <div class="pie"><p>Consejo: para seleccionar múltiples canciones, deja pulsada la tecla Crtl a la vez que haces click en cada una de las canciones</p></div>
   </body>
 <footer></footer>
