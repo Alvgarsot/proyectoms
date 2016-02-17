@@ -9,13 +9,32 @@ SET nombre_lista='".$_POST["nlista"]."' WHERE id_lista='".$_SESSION['id']."';"))
          }
  }
  if (isset($_POST["quita"])) {
-for ($x = 0; $x < sizeof($_POST["quita"]); $x++) {
-    echo "<p>The number is:". $x." </p>";
+
+   foreach ($_POST["quita"] as $z) {
+    if($result=$connection->query("DELETE FROM forma
+WHERE id_cancionfk2='".$z."' AND id_listafk='".$_SESSION['id']."';")) {
+    }
 }
-          }
+}
+          
  if (isset($_POST["incluye"])) {
-         
-          }
+     if ($result2=$connection->query("SELECT max(num_cancion) as maximo FROM forma WHERE id_listafk='".$_SESSION['id']."';")) {
+         }
+     if ($result2->num_rows===0) {
+                echo "Lista vacía";
+              } else {
+                 while($obj2=$result2->fetch_object()) {
+                     $maximo=$obj2->maximo;
+                     $contador=$maximo+1;
+                     foreach ($_POST["incluye"] as $k) {
+    if($result=$connection->query("INSERT INTO forma (id_listafk,id_cancionfk2,num_cancion) values (".$_SESSION['id'].",".$k.",".$contador.");")) {
+    $contador++;
+    }
+                 }
+        
+}
+ }
+ }
 unset($_SESSION['id']);
-//header("location: usuario.php");
+header("location: usuario.php");
 ?>
