@@ -29,14 +29,18 @@ unset($_SESSION['id']);
               printf("Conexión fallida: %s\n", $connection->connect_error);
               exit();
           }
-          $query = $connection->prepare("SELECT * FROM usuario WHERE nombre_usuario=? AND pass=md5(?)");
+          $query = $connection->prepare("SELECT nivel_adm FROM usuario WHERE nombre_usuario=? AND pass=md5(?)");
           $query->bind_param("ss",$_POST["usuario"],$_POST["pass"]);
           if ($query->execute()) {
                $query->store_result();
               if ($query->affected_rows===0) {
                 echo "LOGIN INVALIDO";
               } else {
-                $_SESSION["usuario"]=$_POST["usuario"];
+                $query->bind_result($nivel);
+                $resultado = $query->fetch();
+                  $_SESSION["usuario"]=$_POST['usuario'];
+                $_SESSION["nivel"]=$nivel;
+                
                 $_SESSION["language"]="es";
                 header("Location: ./area_usuario/usuario.php");
               }
@@ -47,7 +51,7 @@ unset($_SESSION['id']);
       }
     ?>
       <div class="cabecera"><div id="cabecera1">
-          <img src="./img/headphones2.png"><p>Banner aqui con logo</p></div>
+          <img src="./img/headphones2.png"><p>Proyecto de Implantación Alvaro Garrido Soto</p></div><div id="cabecera2"><p>Identifícate como usuario normal o Administrador</p></div>
       </div>
       
       <div class="logform">
@@ -63,6 +67,6 @@ unset($_SESSION['id']);
         </div>
       </div>
 
-      <div class="pie"><p>-----------------------------Rep aqui--------------------------</p></div>
+      <div class="pie"><p>Inicia sesión y comienza a escuchar tu música favorita en cualquier momento</p></div>
   </body>
 </html>

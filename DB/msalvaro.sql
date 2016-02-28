@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-02-2016 a las 02:05:56
+-- Tiempo de generación: 28-02-2016 a las 04:38:53
 -- Versión del servidor: 5.6.21
 -- Versión de PHP: 5.6.3
 
@@ -92,7 +92,17 @@ INSERT INTO `forma` (`id_listafk`, `id_cancionfk2`, `num_cancion`) VALUES
 (3, 3, 3),
 (3, 4, 4),
 (3, 5, 5),
-(3, 1, 1);
+(3, 1, 1),
+(2, 6, 1),
+(2, 7, 2),
+(2, 2, 3),
+(2, 8, 4),
+(2, 10, 5),
+(2, 12, 6),
+(6, 5, 1),
+(6, 6, 2),
+(6, 10, 3),
+(6, 14, 4);
 
 -- --------------------------------------------------------
 
@@ -105,18 +115,18 @@ CREATE TABLE IF NOT EXISTS `lista` (
   `nombre_usuariofk` varchar(20) NOT NULL,
   `nombre_lista` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `fecha_crea` date NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `lista`
 --
 
 INSERT INTO `lista` (`id_lista`, `nombre_usuariofk`, `nombre_lista`, `fecha_crea`) VALUES
-(1, 'dani', 'Vasilems', '2016-01-15'),
-(2, 'Alvaro', 'Rap OG', '2016-02-07'),
+(2, 'Alvaro', 'Lista mojonera', '2016-02-07'),
 (3, 'Alvaro', 'Jazz', '2016-02-07'),
-(4, 'Alvaro', 'Musica clasica', '2016-01-15'),
-(5, 'antonio', 'La Luz', '2016-02-10');
+(4, 'Alvaro', 'Música clásica', '2016-01-15'),
+(5, 'antonio', 'La Luz', '2016-02-10'),
+(6, 'Alvaro', 'Lista Spinning pa las viejita', '2016-02-28');
 
 -- --------------------------------------------------------
 
@@ -139,7 +149,8 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 INSERT INTO `usuario` (`nombre_usuario`, `pass`, `nivel_adm`, `fecha_registro`, `correo`) VALUES
 ('Alvaro', '98db6b79acb71383b5a83e0bbc1cadd4', 0, '2016-01-15', 'alvgarsot92@gmail.com'),
 ('antonio', '039b1c691a81135e6dd931584aeb3e85', 0, '2016-02-10', 'anto_gs88@hotmail.com'),
-('dani', '55b7e8b895d047537e672250dd781555', 1, '2016-01-15', 'daniel_martin91@hotmail.com');
+('daniel', 'aa47f8215c6f30a0dcdb2a36a9f4168e', 1, '2016-02-28', 'dani_martin91@hotmail.com'),
+('pekechis', 'b07776334776699c58bf11906daaf469', 1, '2016-02-28', 'pekechis@gmail.com');
 
 --
 -- Índices para tablas volcadas
@@ -193,7 +204,7 @@ MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT de la tabla `lista`
 --
 ALTER TABLE `lista`
-MODIFY `id_lista` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+MODIFY `id_lista` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- Restricciones para tablas volcadas
 --

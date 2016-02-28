@@ -1,6 +1,7 @@
 
 <?php
   session_start();
+
 unset($_SESSION['id']);
 // ----------------- PARA LA LISTA DE REPRODUCCION       -----------------------
                   if (isset($_GET['cancion'])) {
@@ -54,10 +55,13 @@ function setup() {
 
     <!--  ----------------------CABECERA---------------------- -->
       <div class="cabecera">
-        <div id="cabecera1"><img src="../img/headphones.png"><p>Banner aqui con logo --------------<?php echo "BIENVENIDO ".strtoupper($_SESSION["usuario"]);
+        <div id="cabecera1"><img src="../img/headphones.png"><p><?php echo "BIENVENIDO ".strtoupper($_SESSION["usuario"]);
            ?></p></div>
-          <div id="cabecera2"><p><a href="cierre.php">Cerrar sesión</a></p></div>
+          <div id="cabecera2"><p><a href="cierre.php">Cerrar sesión</a><?php if($_SESSION['nivel']==0) { 
+               echo "&nbsp &nbsp &nbsp <a href='administracion.php'>Ir a la zona de administración</a>";
+           } ?></p></div>
       </div>
+      <div class="nuevalista"><a href="crear.php">CREAR LISTA NUEVA</a></div>
       <!-- --------------LISTAS---------------- -->
       <div class="listas">
           <div class="liscab">Listas:</div>
@@ -72,10 +76,10 @@ $connection->set_charset("utf8");
         if ($result = $connection->query("SELECT * FROM lista join usuario on lista.nombre_usuariofk=usuario.nombre_usuario
             WHERE nombre_usuario='".$_SESSION['usuario']."';")) {
               if ($result->num_rows===0) {
-                echo "No tiene lista";
+                echo "<p>No tiene lista</p>";
               } else {
                  while($obj = $result->fetch_object()) {
-                     echo "<li><a href='editar.php?id=$obj->id_lista'><img src='../img/lista.png'></a><img src='../img/anadir2.png'><a href='usuario.php?id=$obj->id_lista'> ".$obj->nombre_lista." <span class='fechacr'></span> </a></li>";
+                     echo "<li><a href='editar.php?id=$obj->id_lista'><img src='../img/lista.png'></a><a href='usuario.php?id=$obj->id_lista'> ".$obj->nombre_lista." <span class='fechacr'></span> </a></li>";
                  }
               }
           } else {
@@ -92,12 +96,10 @@ $connection->set_charset("utf8");
           <div class="cancont"><?php
 /*       ------------------------------ SEGUNDA CONSULTA ----------------------------  */
 if (isset($_GET["id"])) {
-//$connection2 = new mysqli("localhost", "msadmin", "admin", "msalvaro");  /*       -----NO HACEN FALTA MAS CONEXIONES PUDIENDO PARTIR DE UNA CREADA ANTERIORMENTE ------ */
- //   $connection2->set_charset("utf8");
     $id=$_GET["id"];
         if ($result2 = $connection->query("SELECT * FROM lista , usuario, forma, cancion WHERE lista.nombre_usuariofk=usuario.nombre_usuario AND lista.id_lista=forma.id_listafk AND cancion.id_cancion=forma.id_cancionfk2 AND nombre_usuario='".$_SESSION['usuario']."' AND id_lista='".$_GET['id']."' ORDER BY num_cancion asc;")) {
               if ($result2->num_rows===0) {
-                echo "Lista vacía";
+                echo "<p>&nbsp &nbsp &nbsp &nbsp &nbsp Lista vacía</p>";
               } else {
                  while($obj2 = $result2->fetch_object()) {
                      $cancion=array('id'=>$_GET['id'],'cancion'=>$obj2->nombre_cancion);
