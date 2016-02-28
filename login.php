@@ -1,5 +1,8 @@
 
 <?php
+
+  include_once("./configuracion_bd.php");
+
   session_start();
 unset($_SESSION['id']);
 ?>
@@ -23,7 +26,7 @@ unset($_SESSION['id']);
          }
         if (isset($_POST["usuario"])) {
 
-          $connection = new mysqli("localhost", "msadmin", "admin", "msalvaro");
+          $connection = new mysqli($db_host, $db_user, $db_password,$db_name);
 
           if ($connection->connect_errno) {
               printf("Conexión fallida: %s\n", $connection->connect_error);
@@ -51,7 +54,12 @@ unset($_SESSION['id']);
       }
     ?>
       <div class="cabecera"><div id="cabecera1">
-          <img src="./img/headphones2.png"><p>Proyecto de Implantación Alvaro Garrido Soto</p></div><div id="cabecera2"><p>Identifícate como usuario normal o Administrador</p></div>
+          <img src="./img/headphones2.png"><p>  <?php if (isset($_GET['status'])) {
+        echo "¡El usuario se ha creado satisfactoriamente! Procede a iniciar sesión para disfrutar del servicio";
+    } else {
+    echo "Proyecto de Implantación Alvaro Garrido Soto- proyectoms";
+    }
+?></p></div><div id="cabecera2"><p>Identifícate como usuario normal o Administrador</p></div>
       </div>
       
       <div class="logform">
@@ -66,6 +74,8 @@ unset($_SESSION['id']);
         </form>
         </div>
       </div>
+      <div class="botoncrear"><a href="crearusuario.php">Crear usuario</a></div>
+    
 
       <div class="pie"><p>Inicia sesión y comienza a escuchar tu música favorita en cualquier momento</p></div>
   </body>

@@ -1,18 +1,17 @@
 
 <?php
   session_start();
-
+  include("../configuracion_bd.php");
 unset($_SESSION['id']);
 // ----------------- PARA LA LISTA DE REPRODUCCION       -----------------------
                   if (isset($_GET['cancion'])) {
-$connection3 = new mysqli("localhost", "msadmin", "admin", "msalvaro");
+$connection3 = new mysqli($db_host, $db_user, $db_password, $db_name);
     $connection3->set_charset("utf8");
                       $r=0;
                       $j=0;
     $siguiente_cancion[0]="ASEREJE";
         if ($result3 = $connection3->query("SELECT nombre_cancion FROM lista , usuario, forma, cancion WHERE lista.nombre_usuariofk=usuario.nombre_usuario AND lista.id_lista=forma.id_listafk AND cancion.id_cancion=forma.id_cancionfk2 AND num_cancion>(SELECT num_cancion FROM lista , usuario, forma, cancion WHERE lista.nombre_usuariofk=usuario.nombre_usuario AND lista.id_lista=forma.id_listafk AND cancion.id_cancion=forma.id_cancionfk2 AND nombre_cancion='".$_GET['cancion']."' AND nombre_usuario='".$_SESSION['usuario']."' AND id_lista='".$_GET['id']."') AND nombre_usuario='".$_SESSION['usuario']."' AND id_lista='".$_GET['id']."' ORDER BY num_cancion asc;")) {
               if ($result3->num_rows===0) {
-                echo "ERROR";
               } else {
                    while($obj3 = $result3->fetch_object()) {
                      $siguiente_cancion[$r]=$obj3->nombre_cancion;
@@ -71,7 +70,7 @@ function setup() {
         if (!isset($_SESSION["usuario"])) {
           header("location: ../login.php");
           }
-             $connection = new mysqli("localhost", "msadmin", "admin", "msalvaro");
+             $connection = new mysqli($db_host, $db_user, $db_password, $db_name);
 $connection->set_charset("utf8");
         if ($result = $connection->query("SELECT * FROM lista join usuario on lista.nombre_usuariofk=usuario.nombre_usuario
             WHERE nombre_usuario='".$_SESSION['usuario']."';")) {
@@ -102,6 +101,7 @@ if (isset($_GET["id"])) {
                 echo "<p>&nbsp &nbsp &nbsp &nbsp &nbsp Lista vacía</p>";
               } else {
                  while($obj2 = $result2->fetch_object()) {
+/* --------------------COMO PASAR MULTIPLES GETS CONSECUTIVOS ---------------- */
                      $cancion=array('id'=>$_GET['id'],'cancion'=>$obj2->nombre_cancion);
                      $url=http_build_query($cancion);
                      $url_final="usuario.php?".$url;
@@ -124,7 +124,9 @@ else {
 /* ---------------------------------------- REPRODUCTOR -------------------- */
 if (isset($_GET["cancion"])) {           
 echo "<audio id='audio' src='../../aver/".$_GET['cancion']."' controls='controls' autoplay><p>Este navegador es compatible con nuestro reproductor de música, rogamos lo intente de nuevo en otro navegador</p></audio>";
-              }
+              } else { 
+    echo "<p>Indica la canción que deseas reproducir pulsando el botón de Play y aquí aparecerá el reproductor de música</p>";
+}
           ?></div>
   </body>
 </html>

@@ -1,14 +1,15 @@
 <?php
   session_start();
+include_once("../configuracion_bd.php");
 /* ----------------------------- NOS ASEGURAMOS DE QUE SOLO ACCEDEN USUARIOS AUTORIZADOS ----------------------- */
   if (!isset($_SESSION["usuario"])) {
               header("Location: ../login.php");
          }
 if ($_SESSION["nivel"]===1) {
-              header("Location: ../login.php");
+              header("Location: usuario.php");
          }
 $consultita="SELECT * FROM usuario WHERE nivel_adm=1;";
-$connection = new mysqli("localhost", "msadmin", "admin", "msalvaro");
+$connection = new mysqli($db_host, $db_user, $db_password, $db_name);
  if ($result = $connection->query($consultita)) {
      if ($result->num_rows===0) {
               echo "<h1>No hay ningun usuario</h1>";
@@ -44,7 +45,7 @@ $connection = new mysqli("localhost", "msadmin", "admin", "msalvaro");
           <div id="cabecera2"><p><a href="cierre.php">Cerrar sesión</a> &nbsp &nbsp &nbsp <a href="usuario.php">Volver</a></p></div>
       </div>
      
-      <div class="editarlista">
+      <div class="tablaadm">
                <table>
             <tr><th>Usuario</th><th>Fecha de registro</th><th>Correo electrónico</th><th>Administrar sus listas</th><th>Borrar usuario</th></tr>
                 <?php
@@ -54,7 +55,7 @@ if (isset($usuario)) {
             echo "<td>".$usuario[$y]."</td>";
             echo "<td>".$fecha[$y]."</td>";
             echo "<td>".$correo[$y]."</td>";
-            echo "<td><a href='editarlistas.php?edit=$usuario[$y]'><img class='imagen_adm' src='../img/anadir2.png'></a></td>";
+            echo "<td><a href='administrarlistas.php?edit=$usuario[$y]'><img class='imagen_adm' src='../img/anadir2.png'></a></td>";
             echo "<td><a href='accion2.php?borr=$usuario[$y]'><img class='imagen_adm' src='../img/borrar.png'></a></td>";
             echo "</tr>";
         }

@@ -1,13 +1,14 @@
 
 <?php
   session_start();
+include_once("../configuracion_bd.php");
   if (!isset($_SESSION["usuario"])) {
               header("Location: ../login.php");
          }
 /* ------------- IMPIDE QUE OTROS USUARIOS EDITEN LISTAS AJENAS Y DE CAMINO GUARDAMOS LISTA------------------- */
 if (isset($_GET['id'])) {
     $_SESSION['id']=$_GET['id'];
-$connection = new mysqli("localhost", "msadmin", "admin", "msalvaro");
+$connection = new mysqli($db_host, $db_user, $db_password, $db_name);
     $connection->set_charset("utf8");
     if ($result2=$connection->query("SELECT * FROM lista join usuario on lista.nombre_usuariofk=usuario.nombre_usuario
             WHERE nombre_usuario='".$_SESSION['usuario']."' AND id_lista='".$_GET['id']."';")) {
@@ -63,7 +64,7 @@ if ($result3=$connection->query("SELECT * FROM cancion WHERE cancion.id_cancion 
                 echo "LA LISTA CONTIENE TODAS LAS CANCIONES POSIBLES";
               } else {
          while($obj2 = $result3->fetch_object()) {
-                    echo "<option value='".$obj2->id_cancion."'>".$obj2->nombre_cancion."</option>";
+                    echo "<option value='".$obj2->id_cancion."'>".substr($obj2->nombre_cancion, 0, -4)." --- ".$obj2->album."</option>";
                  }
     }
  }
@@ -83,7 +84,7 @@ if ($result4=$connection->query("SELECT * FROM cancion, forma WHERE cancion.id_c
                 echo "LA LISTA CONTIENE TODAS LAS CANCIONES POSIBLES";
               } else {
          while($obj3 = $result4->fetch_object()) {
-                    echo "<option value='".$obj3->id_cancion."'>".$obj3->nombre_cancion."</option>";
+                    echo "<option value='".$obj3->id_cancion."'>".substr($obj3->nombre_cancion, 0, -4)." --- ".$obj3->album."</option>";
                  }
     }
  }
@@ -93,6 +94,7 @@ if ($result4=$connection->query("SELECT * FROM cancion, forma WHERE cancion.id_c
             <p><input type="submit" value="Quitar canción/es"></p>
 </form>
         </div>
+      <div class="borralista"><a <?php echo "href='accion2.php?idlista=".$_GET['id']."'"; ?>>Borrar lista</a></div>
       </div>
       <div class="pie"><p>Consejo: para seleccionar múltiples canciones, deja pulsada la tecla Crtl a la vez que haces click en cada una de las canciones</p></div>
   </body>

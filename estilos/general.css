@@ -4,7 +4,7 @@ body {
     font-family: 'Dosis', sans-serif;
     background-color: #E5E5DB;
     height: 580px;
-   
+
 
 }
 
@@ -56,6 +56,7 @@ color: white;
     width: 30%;
     height: 200px;
    background-color: white;
+
 }
 .formcab {
     width: auto;
@@ -71,7 +72,57 @@ color: white;
     text-align: center;
     padding-top: 30px;
 }
+.botoncrear {
 
+    margin-left: 35%;
+    margin-top: 80px;
+    width: 30%;
+    height: 40px;
+   background-color: #01579B;
+    text-align: center;
+    padding-top: 7px;
+    
+ 
+}
+.botoncrear a {
+    text-decoration: none;
+    color: white;
+}
+.creado {
+
+    margin-left: 35%;
+    margin-top: 80px;
+    width: 30%;
+    height: 40px;
+   background-color: #01579B;
+    text-align: center;
+    padding-top: 7px;
+    
+ 
+}
+/* --------------------------ESTILOS PARA LA CREACION DE USUARIOS-------------------------- */
+
+.creaform {
+    margin-left: 35%;
+    margin-top: 180px;
+    width: 30%;
+    height: 300px;
+   background-color: white;
+}
+.formcab {
+    width: auto;
+    height: 30px;
+    text-align: center;
+    background-color: #3C948B;
+    padding-top: 10px;
+    color: white;
+    
+}
+
+.formcont {
+    text-align: center;
+    padding-top: 30px;
+}
 /* -----------------ESTILOS PARA EL DISPLAY DE LISTAS DE REPRODUCCION------------ */
 .listas {
     float: left;
@@ -232,6 +283,23 @@ background-color: #FFA726;
 color: white;
  text-decoration: none;
 }
+/* ---------------------------- ESTILOS PARA EL BOTON DE BORRAR ----------------------------- */
+.borralista{
+    clear: both;
+    width: 300px;
+    height: 30px;
+    margin-left: 35%;
+    margin-top: 30px;
+    padding-top: 5px;
+    background-color: red;
+    float: left;
+    text-align: center;
+}
+.borralista a {
+color: white;
+ text-decoration: none;
+}
+
 /* ----------------------------- ESTILOS DE LAS BARRAS LATERALES DE SCROLL ----------------------- */
 ::-webkit-scrollbar {
     width: 12px;
@@ -247,13 +315,54 @@ color: white;
     background-color: #2962FF;
 }
 /* ----------------------------- ESTILOS PARA LA ZONA DE ADMINISTRACIÓN ----------------------- */
-.editarlista img {
+.tablaadm img {
     height: 30px;
     width: 30px;
 }
-table tr th {
-width: 20%;
+table {
+width: 100%;
+
 }
-table tr td {
+table th {
 width: 20%;
+    height: 50px;
+    background-color: #7E57C2;
+    color: white;
+}
+table td {
+width: 20%;
+height: 30px;
+}
+.tablaadm {
+float: left;
+margin-top: 80px;
+margin-left: 20%;
+width: 60%;
+text-align: center;
+background-color: #9FA8DA;
+height: inherit;
+}
+/* ----------------------------- ESTILOS PARA LA ZONA DE EDICIÓN DE LISTAS (ADMINISTRACIÓN) ----------------------- */
+.cancont2 {
+    padding-top: 10px;
+    background-color: #B2EBF2;
+    height: 360px;
+     overflow: scroll;
+}
+.cancont2 li {
+list-style-type: none;
+margin-bottom: 2px;
+height: 30px;
+padding-top: 5px;
+cursor: pointer;
+}
+.cancont2 li:hover {
+background-color: #F44336;
+color: white;
+}
+.cancont2 li img {
+    height: 30px;
+    width: 30px;
+    margin-left: 5px;
+    float: left;
 }

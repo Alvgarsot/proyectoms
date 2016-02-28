@@ -1,5 +1,6 @@
 <?php
   session_start();
+include_once("../configuracion_bd.php");
   if (!isset($_SESSION["usuario"])) {
               header("Location: ../login.php");
          }
@@ -34,7 +35,7 @@
                        <select name="incluye[]" multiple>
             <!-- -------------------- BLOQUE PARA SACAR TODAS LAS CANCIONES -------------------- -->
             <?php
-$connection = new mysqli("localhost", "msadmin", "admin", "msalvaro");
+$connection = new mysqli($db_host, $db_user, $db_password, $db_name);
 if ($result3=$connection->query("SELECT * FROM cancion;")) {
      if ($result3->num_rows===0) {
                 echo "ERROR FATAL, ABORTAR MISIÓN";

@@ -1,6 +1,7 @@
 <?php
 session_start();
-$connection = new mysqli("localhost", "msadmin", "admin", "msalvaro");
+include_once("../configuracion_bd.php");
+$connection = new mysqli($db_host, $db_user, $db_password, $db_name);
 $connection->set_charset("utf8");
 
  if (isset($_POST["nuevalista"])) {
@@ -23,6 +24,29 @@ $connection->set_charset("utf8");
    }
      header("location: usuario.php");
 }
+
+
+/* ------------------ BORRAR LISTA DE REPRODUCCION A UN USUARIO DESDE ADMINISTRACION ----------------- */
+if (isset($_GET["idlista"])) {
+ if ($consulta=$connection->query("DELETE FROM forma WHERE id_listafk=".$_GET['idlista'].";")) {
+    }
+    if ($consulta=$connection->query("DELETE FROM lista WHERE id_lista=".$_GET['idlista'].";")) {
+    }
+    if ($_SESSION['nivel']==1){
+   header('location: usuario.php');
+    }else{
+        header('location: administracion.php');
+    }
+}
+
+/* ------------------ BORRAR CANCION A UN USUARIO DESDE ADMINISTRACION ----------------- */
+if (isset($_GET["del"])) {
+ if ($consulta=$connection->query("DELETE FROM forma WHERE id_listafk=".$_GET['id2']." AND id_cancionfk2=".$_GET['del'].";")) {
+        
+    }
+   header('location: administrarlistas.php');
+}
+/* ------------------ PARA BORRAR USUARIO ----------------- */
  if (isset($_GET["borr"])) {
      $g=0;
      if ($consulta=$connection->query("SELECT * from lista where nombre_usuariofk='".$_GET['borr']."'")) {
@@ -36,7 +60,7 @@ $connection->set_charset("utf8");
 WHERE id_listafk='".$z."';")) {
     }
 }
-         /* ------------------ BORRAR LISTA DESPUES (AL NO PONER ON DELETE CASCADE) ----------------- */
+         /* ------------------ BORRAR LISTAS DESPUES (AL NO PONER ON DELETE CASCADE) ----------------- */
          if($result3=$connection->query("DELETE FROM lista
 WHERE nombre_usuariofk='".$_GET['borr']."';")) {
     }
@@ -46,6 +70,10 @@ WHERE nombre_usuario='".$_GET['borr']."';")) {
     }
 
  }
+     header("location: administracion.php");
+ }
+ if (isset($_GET["check"])) {
+    unset($_SESSION['sujeto']);
      header("location: administracion.php");
  }
  

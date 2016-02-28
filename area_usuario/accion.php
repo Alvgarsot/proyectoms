@@ -1,6 +1,7 @@
 <?php
 session_start();
-$connection = new mysqli("localhost", "msadmin", "admin", "msalvaro");
+include_once("../configuracion_bd.php");
+$connection = new mysqli($db_host, $db_user, $db_password, $db_name);
 $connection->set_charset("utf8");
 /* ------------------ CAMBIAR NOMBRE DE LISTA ----------------- */
  if (isset($_POST["nlista"])) {
