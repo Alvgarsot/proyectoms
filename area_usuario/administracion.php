@@ -23,6 +23,8 @@ $connection = new mysqli($db_host, $db_user, $db_password, $db_name);
             $correo[$z]=$obj->correo;
                 $z++;
                 }
+                $result->close();
+                unset($obj);
             }
  }
 ?>
@@ -64,5 +66,5 @@ if (isset($usuario)) {
           </table>
                </div>
       <div class="pie"><p>En esta zona puedes administrar los usuarios, pudiendo borrarlos e incluso editar sus listas de reproducción</p></div>
-  </body>
+  </body><?php  unset($connection); ?>
 </html>

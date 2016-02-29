@@ -41,8 +41,10 @@ if ($result3=$connection->query("SELECT * FROM cancion;")) {
                 echo "ERROR FATAL, ABORTAR MISIÓN";
               } else {
          while($obj2 = $result3->fetch_object()) {
-                    echo "<option value='".$obj2->id_cancion."'>".$obj2->nombre_cancion."</option>";
+                    echo "<option value='".$obj2->id_cancion."'>".substr($obj2->nombre_cancion, 0, -4)." --- ".$obj2->album."</option>";
                  }
+         $result3->close();
+         unset($obj2);
     }
  }
 ?>
@@ -53,5 +55,5 @@ if ($result3=$connection->query("SELECT * FROM cancion;")) {
                
                </div>
       <div class="pie"><p>Crea tu lista de reproducción ahora mismo, puedes comenzar a añadir canciones ya mismo</p></div>
-  </body>
+  </body><?php unset($connection); ?>
 </html>

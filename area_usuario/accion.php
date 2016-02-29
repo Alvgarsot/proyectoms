@@ -9,15 +9,15 @@ $connection->set_charset("utf8");
 SET nombre_lista='".$_POST["nlista"]."' WHERE id_lista='".$_SESSION['id']."';")) {
          }
  }
+/* ------------------ QUITAR CANCIONES DE LA LISTA ----------------- */
  if (isset($_POST["quita"])) {
-
    foreach ($_POST["quita"] as $z) {
     if($result=$connection->query("DELETE FROM forma
 WHERE id_cancionfk2='".$z."' AND id_listafk='".$_SESSION['id']."';")) {
     }
 }
 }
-          
+          /* ------------------ INSERTAR CANCIONES EN LA LISTA ----------------- */
  if (isset($_POST["incluye"])) {
      if ($result2=$connection->query("SELECT max(num_cancion) as maximo FROM forma WHERE id_listafk='".$_SESSION['id']."';")) {
          }
@@ -34,8 +34,11 @@ WHERE id_cancionfk2='".$z."' AND id_listafk='".$_SESSION['id']."';")) {
                  }
         
 }
+         $result2->close();
+         unset($obj2);
  }
  }
+unset($connection);
 unset($_SESSION['id']);
 header("location: usuario.php");
 ?>

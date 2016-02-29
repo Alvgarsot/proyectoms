@@ -65,10 +65,11 @@ $connection->set_charset("utf8");
                  while($obj = $result->fetch_object()) {
                      echo "<li><a href='accion2.php?idlista=$obj->id_lista'><img src='../img/borrlist.png'></a><a href='administrarlistas.php?id=$obj->id_lista'> ".$obj->nombre_lista." <span class='fechacr'></span> </a></li>";
                  }
+                  $result->close();
+                  unset($obj);
               }
           } else {
             echo "Consulta equivocada";
-            var_dump($result);
           }
 ?>
               </ul>
@@ -91,10 +92,11 @@ if (isset($_GET["id"])) {
                      $url_final="accion2.php?".$url;
                   echo "<li><a href='$url_final'><img src='../img/borrimg.png'></a>&nbsp&nbsp&nbsp-".substr($obj2->nombre_cancion, 0, -4)."<p class='caninfo'>".$obj2->album." - ".$obj2->autor." - ".$obj2->genero." - ".$obj2->duracion."</p></li>";
                  }
+                  $result2->close();
+                  unset($obj2);
               }
           } else {
             echo "Consulta equivocada";
-            var_dump($result2);
           }
 }
 else {
@@ -105,5 +107,5 @@ else {
         </div>
       </div>
       <div class="pie"><p>En esta zona puedes administrar las listas de reproducción del usuario <?php echo $_SESSION['sujeto']; ?>, pudiendo borrarlas e incluso borrar canciones de sus listas de reproducción</p></div>
-  </body>
+  </body><?php  unset($connection); ?>
 </html>

@@ -73,7 +73,6 @@ color: white;
     padding-top: 30px;
 }
 .botoncrear {
-
     margin-left: 35%;
     margin-top: 80px;
     width: 30%;
@@ -81,15 +80,13 @@ color: white;
    background-color: #01579B;
     text-align: center;
     padding-top: 7px;
-    
- 
+
 }
 .botoncrear a {
     text-decoration: none;
     color: white;
 }
 .creado {
-
     margin-left: 35%;
     margin-top: 80px;
     width: 30%;
@@ -97,8 +94,6 @@ color: white;
    background-color: #01579B;
     text-align: center;
     padding-top: 7px;
-    
- 
 }
 /* --------------------------ESTILOS PARA LA CREACION DE USUARIOS-------------------------- */
 
@@ -222,8 +217,19 @@ margin-right: 5px;
 /* ----------------------- ESTILOS DEL REPRODUCTOR -------------------- */
 #audio {
 align-content: center;
-    width: 20%;
     margin-top: 15px;
+}
+.actual {
+    width: 33%;
+    float: left;
+}
+.rep {
+    width: 33%;
+    float: left;
+}
+.siguiente {
+width: 33%;
+float: left;
 }
 
 /* --------------------- ESTILOS FORMULARIO DE EDITAR ------------------------------- */

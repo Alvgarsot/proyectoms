@@ -20,8 +20,10 @@ $connection = new mysqli($db_host, $db_user, $db_password, $db_name);
                     $nlista=$obj->nombre_lista;
                                                 }
                     }
-                                }
-                    } else {
+             $result2->close();
+            unset($obj);
+      }
+  } else {
             echo "Consulta equivocada";
          header("Location: usuario.php");
                             }
@@ -66,6 +68,9 @@ if ($result3=$connection->query("SELECT * FROM cancion WHERE cancion.id_cancion 
          while($obj2 = $result3->fetch_object()) {
                     echo "<option value='".$obj2->id_cancion."'>".substr($obj2->nombre_cancion, 0, -4)." --- ".$obj2->album."</option>";
                  }
+         $result3->close();
+         unset($obj2);
+         
     }
  }
 ?>
@@ -86,6 +91,9 @@ if ($result4=$connection->query("SELECT * FROM cancion, forma WHERE cancion.id_c
          while($obj3 = $result4->fetch_object()) {
                     echo "<option value='".$obj3->id_cancion."'>".substr($obj3->nombre_cancion, 0, -4)." --- ".$obj3->album."</option>";
                  }
+         $result4->close();
+         unset($obj3);
+         
     }
  }
 ?>
@@ -98,5 +106,5 @@ if ($result4=$connection->query("SELECT * FROM cancion, forma WHERE cancion.id_c
       </div>
       <div class="pie"><p>Consejo: para seleccionar múltiples canciones, deja pulsada la tecla Crtl a la vez que haces click en cada una de las canciones</p></div>
   </body>
-<footer></footer>
+<footer></footer><?php unset($connection); ?>
 </html>

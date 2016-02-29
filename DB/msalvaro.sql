@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-02-2016 a las 04:38:53
+-- Tiempo de generación: 28-02-2016 a las 23:17:17
 -- Versión del servidor: 5.6.21
 -- Versión de PHP: 5.6.3
 
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `cancion` (
   `autor` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL,
   `genero` varchar(50) DEFAULT NULL,
   `duracion` time NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `cancion`
@@ -56,7 +56,41 @@ INSERT INTO `cancion` (`id_cancion`, `nombre_cancion`, `album`, `anio_salida`, `
 (13, 'You and Me.mp3', 'Wake', 2005, 'Trio Toykeat', 'Jazz', '00:07:52'),
 (14, 'Third Ball.mp3', 'Wake', 2005, 'Trio Toykeat', 'Jazz', '00:06:09'),
 (15, 'Sir Vival.mp3', 'Wake', 2005, 'Trio Toykeat', 'Jazz', '00:05:25'),
-(16, 'Insane in Seine.mp3', 'Wake', 2005, 'Trio Toykeat', 'Jazz', '00:07:12');
+(16, 'Insane in Seine.mp3', 'Wake', 2005, 'Trio Toykeat', 'Jazz', '00:07:12'),
+(17, 'Beatophone.mp3', 'Panic', 2012, 'Caravan Palace', 'Electro Swing', '00:03:51'),
+(18, 'Clash.mp3', 'Panic', 2012, 'Caravan Palace', 'Electro Swing', '00:04:12'),
+(19, 'Cotton Heads.mp3', 'Panic', 2012, 'Caravan Palace', 'Electro Swing', '00:03:38'),
+(20, 'Dramaphone.mp3', 'Panic', 2012, 'Caravan Palace', 'Electro Swing', '00:03:23'),
+(21, 'Maniac.mp3', 'Panic', 2012, 'Caravan Palace', 'Electro Swing', '00:04:10'),
+(22, 'Newbop.mp3', 'Panic', 2012, 'Caravan Palace', 'Electro Swing', '00:02:49'),
+(23, 'Panic.mp3', 'Panic', 2012, 'Caravan Palace', 'Electro Swing', '00:04:04'),
+(24, 'Rock it for me.mp3', 'Panic', 2012, 'Caravan Palace', 'Electro Swing', '00:03:10'),
+(25, 'The dirty side of the street.mp3', 'Panic', 2012, 'Caravan Palace', 'Electro Swing', '00:03:37'),
+(26, 'Keep Ya Head Up.mp3', '2Pac Greatest Hits', 1998, '2Pac', 'Rap', '00:04:24'),
+(27, 'Me Against The World.mp3', '2Pac Greatest Hits', 1998, '2Pac', 'Rap', '00:04:39'),
+(28, 'How Do U Want It.mp3', '2Pac Greatest Hits', 1998, '2Pac', 'Rap', '00:04:48'),
+(29, 'I Ain''t Mad At Cha.mp3', '2Pac Greatest Hits', 1998, '2Pac', 'Rap', '00:04:54'),
+(30, 'I Get Around.mp3', '2Pac Greatest Hits', 1998, '2Pac', 'Rap', '00:04:19'),
+(31, 'All About U.mp3', '2Pac Greatest Hits', 1998, '2Pac', 'Rap', '00:04:33'),
+(32, 'Could You Be Loved.mp3', 'Bob Marley Greatest Hits', 2008, 'Bob Marley', 'Reggae', '00:04:00'),
+(33, 'Is This Love.mp3', 'Bob Marley Greatest Hits', 2008, 'Bob Marley', 'Reggae', '00:03:53'),
+(34, 'Jamming.mp3', 'Bob Marley Greatest Hits', 2008, 'Bob Marley', 'Reggae', '00:03:53'),
+(35, 'One Love.mp3', 'Bob Marley Greatest Hits', 2008, 'Bob Marley', 'Reggae', '00:02:55'),
+(36, 'Three Little Birds.mp3', 'Bob Marley Greatest Hits', 2008, 'Bob Marley', 'Reggae', '00:03:03'),
+(37, 'Bad Boys.mp3', 'Bob Marley Greatest Hits', 2008, 'Bob Marley', 'Reggae', '00:03:36'),
+(38, 'MIX eric the tutor 2PAC.mp3', 'Math class V17', 2010, '2Pac- Eric the tutor', 'Rap-Mix', '01:01:15'),
+(39, 'MIX eric the tutor BIGGIE.mp3', 'Math class V15', 2009, 'Biggie Smalls - Eric the tutor', 'Rap-Mix', '01:11:55'),
+(40, 'Tesla.mp3', 'You''re Dead!', 2014, 'Flying Lotus', 'Electronic', '00:01:54'),
+(41, 'Never Catch Me (feat. Kendrick).mp3', 'You''re Dead!', 2014, 'Flying Lotus', 'Electronic', '00:03:54'),
+(42, 'Turkey Dog Coma.mp3', 'You''re Dead!', 2014, 'Flying Lotus', 'Electronic', '00:03:09'),
+(43, 'Stella.mp3', 'Program Music I', 2007, 'Kashiwa Daisuke', 'Electronic', '00:35:58'),
+(44, 'Write Once, Run Melos.mp3', 'Program Music I', 2007, 'Kashiwa Daisuke', 'Electronic', '00:25:56'),
+(45, 'Bitch, Dant Kill My Vibe.mp3', 'Good Kid, M.A.A.D City', 2012, 'Kendrick Lamar', 'Hip-Hop/Rap', '00:05:10'),
+(46, 'The Art Of Peer Pressure.mp3', 'Good Kid, M.A.A.D City', 2012, 'Kendrick Lamar', 'Hip-Hop/Rap', '00:05:24'),
+(47, 'Money Trees (Feat. Jay Rock).mp3', 'Good Kid, M.A.A.D City', 2012, 'Kendrick Lamar', 'Hip-Hop/Rap', '00:06:26'),
+(48, 'Sing About Me, Im Dying Of Thirst.mp3', 'Good Kid, M.A.A.D City', 2012, 'Kendrick Lamar', 'Hip-Hop/Rap', '00:12:03'),
+(49, 'The Recipe (Feat. Dr Dre).mp3', 'Good Kid, M.A.A.D City', 2012, 'Kendrick Lamar', 'Hip-Hop/Rap', '00:05:53'),
+(50, 'Black Boy Fly.mp3', 'Good Kid, M.A.A.D City', 2012, 'Kendrick Lamar', 'Hip-Hop/Rap', '00:04:39');
 
 -- --------------------------------------------------------
 
@@ -93,16 +127,13 @@ INSERT INTO `forma` (`id_listafk`, `id_cancionfk2`, `num_cancion`) VALUES
 (3, 4, 4),
 (3, 5, 5),
 (3, 1, 1),
-(2, 6, 1),
-(2, 7, 2),
-(2, 2, 3),
-(2, 8, 4),
-(2, 10, 5),
-(2, 12, 6),
-(6, 5, 1),
-(6, 6, 2),
-(6, 10, 3),
-(6, 14, 4);
+(4, 19, 1),
+(4, 20, 2),
+(4, 21, 3),
+(4, 22, 4),
+(4, 23, 5),
+(4, 24, 6),
+(4, 25, 7);
 
 -- --------------------------------------------------------
 
@@ -115,18 +146,15 @@ CREATE TABLE IF NOT EXISTS `lista` (
   `nombre_usuariofk` varchar(20) NOT NULL,
   `nombre_lista` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `fecha_crea` date NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `lista`
 --
 
 INSERT INTO `lista` (`id_lista`, `nombre_usuariofk`, `nombre_lista`, `fecha_crea`) VALUES
-(2, 'Alvaro', 'Lista mojonera', '2016-02-07'),
 (3, 'Alvaro', 'Jazz', '2016-02-07'),
-(4, 'Alvaro', 'Música clásica', '2016-01-15'),
-(5, 'antonio', 'La Luz', '2016-02-10'),
-(6, 'Alvaro', 'Lista Spinning pa las viejita', '2016-02-28');
+(4, 'Alvaro', 'Caravan Palace', '2016-02-28');
 
 -- --------------------------------------------------------
 
@@ -148,9 +176,9 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 
 INSERT INTO `usuario` (`nombre_usuario`, `pass`, `nivel_adm`, `fecha_registro`, `correo`) VALUES
 ('Alvaro', '98db6b79acb71383b5a83e0bbc1cadd4', 0, '2016-01-15', 'alvgarsot92@gmail.com'),
-('antonio', '039b1c691a81135e6dd931584aeb3e85', 0, '2016-02-10', 'anto_gs88@hotmail.com'),
 ('daniel', 'aa47f8215c6f30a0dcdb2a36a9f4168e', 1, '2016-02-28', 'dani_martin91@hotmail.com'),
-('pekechis', 'b07776334776699c58bf11906daaf469', 1, '2016-02-28', 'pekechis@gmail.com');
+('pekechis', 'b07776334776699c58bf11906daaf469', 1, '2016-02-28', 'pekechis@gmail.com'),
+('perico', 'dfe483413e24a5b1506389d36ebfd05c', 1, '2016-02-28', 'perico@hotmail.com');
 
 --
 -- Índices para tablas volcadas
@@ -194,7 +222,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `cancion`
 --
 ALTER TABLE `cancion`
-MODIFY `id_cancion` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
+MODIFY `id_cancion` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=51;
 --
 -- AUTO_INCREMENT de la tabla `comentario`
 --
@@ -204,7 +232,7 @@ MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT de la tabla `lista`
 --
 ALTER TABLE `lista`
-MODIFY `id_lista` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+MODIFY `id_lista` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- Restricciones para tablas volcadas
 --

@@ -9,7 +9,7 @@ $connection3 = new mysqli($db_host, $db_user, $db_password, $db_name);
     $connection3->set_charset("utf8");
                       $r=0;
                       $j=0;
-    $siguiente_cancion[0]="ASEREJE";
+    $siguiente_cancion[0]="Sin canción....";
         if ($result3 = $connection3->query("SELECT nombre_cancion FROM lista , usuario, forma, cancion WHERE lista.nombre_usuariofk=usuario.nombre_usuario AND lista.id_lista=forma.id_listafk AND cancion.id_cancion=forma.id_cancionfk2 AND num_cancion>(SELECT num_cancion FROM lista , usuario, forma, cancion WHERE lista.nombre_usuariofk=usuario.nombre_usuario AND lista.id_lista=forma.id_listafk AND cancion.id_cancion=forma.id_cancionfk2 AND nombre_cancion='".$_GET['cancion']."' AND nombre_usuario='".$_SESSION['usuario']."' AND id_lista='".$_GET['id']."') AND nombre_usuario='".$_SESSION['usuario']."' AND id_lista='".$_GET['id']."' ORDER BY num_cancion asc;")) {
               if ($result3->num_rows===0) {
               } else {
@@ -18,7 +18,8 @@ $connection3 = new mysqli($db_host, $db_user, $db_password, $db_name);
                        $r++;
                         
                  }
-                 
+                  $result3->close();
+                 unset($obj3);
                  }
               }
           }
@@ -41,10 +42,12 @@ function setup() {
     var siguiente= <?php echo json_encode($siguiente_cancion); ?>;
     audioPlayer = document.getElementById('audio');
     document.getElementById('audio').addEventListener('ended', function(){
+        $( "div.actual p" ).text("Reproduciendo actualmente: "+siguiente[k].substring(0, siguiente[k].length -4));
         audioPlayer.src ="../../aver/"+ siguiente[k];
         audioPlayer.load();
         audioPlayer.play();
         k=k+1;
+        $( "div.siguiente p" ).text("Siguiente canción: "+siguiente[k].substring(0, siguiente[k].length -4));
         }, false);
 
 }
@@ -80,10 +83,11 @@ $connection->set_charset("utf8");
                  while($obj = $result->fetch_object()) {
                      echo "<li><a href='editar.php?id=$obj->id_lista'><img src='../img/lista.png'></a><a href='usuario.php?id=$obj->id_lista'> ".$obj->nombre_lista." <span class='fechacr'></span> </a></li>";
                  }
+                  $result->close();
+                  unset($obj);
               }
           } else {
-            echo "Consulta equivocada";
-            var_dump($result);
+            echo "Consulta equivocada";    
           }
 ?>
               </ul>
@@ -107,10 +111,11 @@ if (isset($_GET["id"])) {
                      $url_final="usuario.php?".$url;
                     echo "<li><a href='$url_final'><img src='../img/play.png'></a>&nbsp&nbsp&nbsp-".substr($obj2->nombre_cancion, 0, -4)."<p class='caninfo'>".$obj2->album." - ".$obj2->autor." - ".$obj2->genero." - ".$obj2->duracion."</p></li>";
                  }
+                  $result2->close();
+                  unset($obj2);
               }
           } else {
             echo "Consulta equivocada";
-            var_dump($result2);
           }
 }
 else {
@@ -123,10 +128,11 @@ else {
       <div class="pie"><?php
 /* ---------------------------------------- REPRODUCTOR -------------------- */
 if (isset($_GET["cancion"])) {           
-echo "<audio id='audio' src='../../aver/".$_GET['cancion']."' controls='controls' autoplay><p>Este navegador es compatible con nuestro reproductor de música, rogamos lo intente de nuevo en otro navegador</p></audio>";
+echo "<div class='actual'><p>Reproduciendo actualmente: ".substr($_GET['cancion'], 0, -4)."</p></div><div class='rep'><audio id='audio' src='../../aver/".$_GET['cancion']."' controls='controls' autoplay><p>Este navegador es compatible con nuestro reproductor de música, rogamos lo intente de nuevo en otro navegador</p></audio></div><div class='siguiente'><p></p></div>";
               } else { 
     echo "<p>Indica la canción que deseas reproducir pulsando el botón de Play y aquí aparecerá el reproductor de música</p>";
 }
           ?></div>
   </body>
+    <?php unset($connection); ?>
 </html>
