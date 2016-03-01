@@ -7,11 +7,40 @@ body {
 
 
 }
+/* tema original */
+.cuerpazo {
 
+    font-family: 'Dosis', sans-serif;
+    background-color: #E5E5DB;
+    height: 580px;
+
+
+}
+/* tema oscuro */
+.cuerpazo2 {
+
+    font-family: 'Dosis', sans-serif;
+    background-color: #78909C;
+    height: 580px;
+
+
+}
+/* tema original */
 .cabecera {
     height: 60px;
     margin: left;
     background-color: #3C948B;
+    margin-top: 0px;
+    color: white;
+    text-align: center;
+    top: 0;
+    width: 100%;
+}
+/* tema oscuro */
+.cabecera2 {
+    height: 60px;
+    margin: left;
+    background-color: #000000;
     margin-top: 0px;
     color: white;
     text-align: center;
@@ -38,6 +67,7 @@ width: 30%;
 #cabecera2 a {
 color: white;
 }
+/* tema original */
 .pie {
     width: 100%;
     height: 60px;
@@ -47,7 +77,16 @@ color: white;
     color: white;
     text-align: center;
 }
-
+/* tema oscuro */
+.pie2 {
+    width: 100%;
+    height: 60px;
+    position: fixed;
+    background-color: #000000;
+    bottom: 0;
+    color: white;
+    text-align: center;
+}
 /* --------------------------ESTILOS PARA EL LOGIN-------------------------- */
 
 .logform {
@@ -127,6 +166,7 @@ color: white;
     height: 400px;
     background-color: white;   
 }
+/* tema original */
 .liscab {
      width: auto;
     height: 30px;
@@ -135,6 +175,16 @@ color: white;
     padding-top: 5px;
     color: white;
 }
+/* tema oscuro */
+.liscab2 {
+     width: auto;
+    height: 30px;
+    text-align: center;
+    background-color: #424242;
+    padding-top: 5px;
+    color: white;
+}
+/* tema original */
 .liscont {
     text-align: center;
     padding-top: 20px;
@@ -142,6 +192,15 @@ color: white;
     height: 345px;
      overflow: scroll;
 }
+/* tema oscuro */
+.liscont2 {
+    text-align: center;
+    padding-top: 20px;
+    background-color: #37474F ;
+    height: 345px;
+     overflow: scroll;
+}
+/* tema original */
 .listausu {
 margin-left:-40px;
 margin-top: -18px;
@@ -165,6 +224,30 @@ background-color: #03A9F4;
     text-decoration: none;
     color: black;
 }
+/* tema oscuro */
+.listausu2 {
+margin-left:-40px;
+margin-top: -18px;
+}
+.listausu2 li {
+list-style-type: none;
+    margin-bottom: 2px;
+height: 30px;
+padding-top: 5px;
+}
+.listausu2 li:hover {
+background-color: #455A64;
+}
+.listausu2 li img {
+    height: 30px;
+    width: 30px;
+    margin-left: 5px;
+    float: left;
+}
+.listausu2 a {
+    text-decoration: none;
+    color: gray;
+}
 /* ------------ESTILOS PARA EL DISPLAY DE CANCIONES DE LAS LISTAS------------ */
 .canciones {
     float: left;
@@ -174,7 +257,7 @@ background-color: #03A9F4;
     height: 400px;
     background-color: white;   
 }
-
+/* tema original */
 .cancab {
      width: auto;
     height: 30px;
@@ -183,6 +266,16 @@ background-color: #03A9F4;
     padding-top: 5px;
     color: white;
 }
+/*tema oscuro */
+.cancab2 {
+     width: auto;
+    height: 30px;
+    text-align: center;
+    background-color: #424242;
+    padding-top: 5px;
+    color: white;
+}
+/* tema original */
 .cancont {
     padding-top: 10px;
     background-color: #B2EBF2;
@@ -201,6 +294,31 @@ cursor: pointer;
 background-color: #03A9F4;
 }
 .cancont li img {
+    height: 30px;
+    width: 30px;
+    margin-left: 5px;
+    float: left;
+}
+/* tema oscuro */
+.cancontalt {
+    padding-top: 10px;
+    background-color: #37474F;
+    height: 360px;
+    overflow: scroll;
+}
+
+.cancontalt li {
+list-style-type: none;
+margin-bottom: 2px;
+height: 30px;
+padding-top: 5px;
+cursor: pointer;
+    color: gray;
+}
+.cancontalt li:hover {
+background-color: #455A64;
+}
+.cancontalt li img {
     height: 30px;
     width: 30px;
     margin-left: 5px;
@@ -231,7 +349,46 @@ align-content: center;
 width: 33%;
 float: left;
 }
+/* -----------------ESTILOS PARA LA SELECCION DE TEMAS ------------------------- */
+.temas {
+    width: 10%;
+    float: left;
+    margin-left: 50px;
+    margin-top: 50px;
+    height: 400px;
+    background-color: gray;
+    
+}
+.cabtema {
+     width: auto;
+    height: 30px;
+    text-align: center;
+    background-color: #424242;
+    padding-top: 5px;
+    color: white;
+    
+}
+.cabtema2 {
+    padding-top: 10px;
+    height: 360px;
+     color: #FFCCBC;
+    text-align: center;
+}
 
+.cabtema2 li {
+list-style-type: none;
+margin-bottom: 2px;
+height: 30px;
+padding-top: 5px;
+cursor: pointer;
+}
+.cabtema2 li:hover {
+background-color: black;
+}
+.cabtema2 a {
+    text-decoration: none;
+     color: white;
+}
 /* --------------------- ESTILOS FORMULARIO DE EDITAR ------------------------------- */
 .editarlista {
 float: left;

@@ -32,7 +32,7 @@ $connection3 = new mysqli($db_host, $db_user, $db_password, $db_name);
     <script src="../librerias/jquery-2.2.0.min.js"></script>
     <script src="../librerias/jquery-ui-1.11.4.custom/jquery-ui.js"></script>
     <script rel="stylesheet" href="../librerias/jquery-ui-1.11.4.custom/jquery-ui.css"></script>
-    <title></title>
+    <title>PROYECTOMS</title>
     <link rel="stylesheet" type="text/css" href="../estilos/general.css">
       <link href='https://fonts.googleapis.com/css?family=Dosis:600' rel='stylesheet' type='text/css'>
       <!-- --------------------SCRIPT PARA PLAYLIST AUTOPLAY---------------------------- -->
@@ -53,10 +53,10 @@ function setup() {
 }
 </script>
   </head>
-  <body onLoad="setup();">
+  <body class="<?php echo $_SESSION['tema'][11]; ?>" onLoad="setup();">
 
     <!--  ----------------------CABECERA---------------------- -->
-      <div class="cabecera">
+      <div class="<?php echo $_SESSION['tema'][0]; ?>">
         <div id="cabecera1"><img src="../img/headphones.png"><p><?php echo "BIENVENIDO ".strtoupper($_SESSION["usuario"]);
            ?></p></div>
           <div id="cabecera2"><p><a href="cierre.php">Cerrar sesión</a><?php if($_SESSION['nivel']==0) { 
@@ -66,9 +66,9 @@ function setup() {
       <div class="nuevalista"><a href="crear.php">CREAR LISTA NUEVA</a></div>
       <!-- --------------LISTAS---------------- -->
       <div class="listas">
-          <div class="liscab">Listas:</div>
-          <div class="liscont">
-             <ul class="listausu">
+          <div class="<?php echo $_SESSION['tema'][2]; ?>">Listas:</div>
+          <div class="<?php echo $_SESSION['tema'][3]; ?>">
+             <ul class="<?php echo $_SESSION['tema'][4]; ?>">
                <?php
         if (!isset($_SESSION["usuario"])) {
           header("location: ../login.php");
@@ -95,8 +95,8 @@ $connection->set_charset("utf8");
       </div>
       <!-- -----------------CANCIONES----------------- -->
       <div class="canciones">
-          <div class="cancab">Canciones:</div>
-          <div class="cancont"><?php
+          <div class="<?php echo $_SESSION['tema'][5]; ?>">Canciones:</div>
+          <div class="<?php echo $_SESSION['tema'][6]; ?>"><?php
 /*       ------------------------------ SEGUNDA CONSULTA ----------------------------  */
 if (isset($_GET["id"])) {
     $id=$_GET["id"];
@@ -125,10 +125,19 @@ else {
               ?>
         </div>
       </div>
-      <div class="pie"><?php
+      <div class="temas">
+          <div class="cabtema">Temas:</div>
+        <div class="cabtema2">
+          <li><a href="tema.php?tema=original">Original</a></li>
+            <li><a href="tema.php?tema=oscuro">Oscuro</a></li>
+            <li><a>En construcción</a></li>
+            <li><a>En construcción</a></li>
+          </div>
+      </div>
+      <div class="<?php echo $_SESSION['tema'][1]; ?>"><?php
 /* ---------------------------------------- REPRODUCTOR -------------------- */
 if (isset($_GET["cancion"])) {           
-echo "<div class='actual'><p>Reproduciendo actualmente: ".substr($_GET['cancion'], 0, -4)."</p></div><div class='rep'><audio id='audio' src='../../aver/".$_GET['cancion']."' controls='controls' autoplay><p>Este navegador es compatible con nuestro reproductor de música, rogamos lo intente de nuevo en otro navegador</p></audio></div><div class='siguiente'><p></p></div>";
+echo "<div class='actual'><p>Reproduciendo actualmente: ".substr($_GET['cancion'], 0, -4)."</p></div><div class='rep'><audio id='audio' src='../../aver/".$_GET['cancion']."' controls='controls' autoplay><p>Este navegador es compatible con nuestro reproductor de música, rogamos lo intente de nuevo en otro navegador</p></audio></div><div class='siguiente'><p>Próxima canción: ".substr($siguiente_cancion[0], 0, -4)."</p></div>";
               } else { 
     echo "<p>Indica la canción que deseas reproducir pulsando el botón de Play y aquí aparecerá el reproductor de música</p>";
 }

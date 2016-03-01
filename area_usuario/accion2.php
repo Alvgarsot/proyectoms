@@ -75,7 +75,7 @@ WHERE nombre_usuario='".$_GET['borr']."';")) {
  if (isset($_GET["check"])) {
     unset($_SESSION['sujeto']);
      header("location: administracion.php");
- }
+ } 
+header("location: usuario.php");
  
-
 ?>

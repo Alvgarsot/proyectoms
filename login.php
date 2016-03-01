@@ -14,7 +14,7 @@ unset($_SESSION['id']);
       <script src="librerias/jquery-2.2.0.min.js"></script>
     <script src="./librerias/jquery-ui-1.11.4.custom/jquery-ui.js"></script>
     <script rel="stylesheet" href="./librerias/jquery-ui-1.11.4.custom/jquery-ui.css"></script>
-    <title></title>
+    <title>PROYECTOMS</title>
     <link rel="stylesheet" type="text/css" href="estilos/general.css">
       <link href='https://fonts.googleapis.com/css?family=Dosis:600' rel='stylesheet' type='text/css'>
   </head>
@@ -43,7 +43,7 @@ unset($_SESSION['id']);
                 $resultado = $query->fetch();
                   $_SESSION["usuario"]=$_POST['usuario'];
                 $_SESSION["nivel"]=$nivel;
-                
+                $_SESSION["tema"]=array("cabecera","pie","liscab","liscont","listausu","cancab","cancont","editarlista","editn","editc","editc2","cuerpazo","cancont2");
                 $_SESSION["language"]="es";
                 header("Location: ./area_usuario/usuario.php");
               }
