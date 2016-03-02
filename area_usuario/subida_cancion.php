@@ -39,11 +39,11 @@ $connection = new mysqli($db_host, $db_user, $db_password, $db_name);
             <p>Autor: <input type='text' name="aucancion" value='' required></input></p>
 <p>Género: <input type='text' name="gencancion" value='' required></input></p>
 <p>Duración: <input type='time' name="durcancion" value='' step="1" required></input></p>
-<p>Canción a subir: <INPUT TYPE="HIDDEN" NAME="MAX_FILE_SIZE" VALUE="20002400">					
+<p>Canción a subir (Tamaño máximo: 20MB): <INPUT TYPE="HIDDEN" NAME="MAX_FILE_SIZE" VALUE="20002400">
 								<input type="file" name="cancionl" value="examinar" required></input></p>
 <p><button value="Enviar" type='submit' name="enviar" >Subir</button> </p>
           </form>
                </div>
-      <div class="pie"><p>En esta zona puedes administrar las canciones, pudiendo borrarlas, editarlas y subirlas</p></div>
+      <div class="pie"><p>En esta zona puedes subir las canciones, tenga paciencia a la hora de subir un archivo grande</p></div>
   </body><?php  unset($connection); ?>
 </html>
