@@ -68,14 +68,29 @@ WHERE nombre_usuariofk='".$_GET['borr']."';")) {
      if($result2=$connection->query("DELETE FROM usuario
 WHERE nombre_usuario='".$_GET['borr']."';")) {
     }
+header("location: administracion.php");
+ }
+     
+ }
+if (isset($_GET["borr2"])) {
+         /* ------------------ BORRAR CANCIONES DE SU LISTA PRIMERO (AL NO PONER ON DELETE CASCADE) ----------------- */
+        
+    if($result4=$connection->query("DELETE FROM forma
+WHERE id_cancionfk2='".$z."';")) {
+    
+}
+         /* ------------------ BORRAR CANCIONES DESPUES (AL NO PONER ON DELETE CASCADE) ----------------- */
+         if($result3=$connection->query("DELETE FROM cancion
+WHERE id_cancion='".$_GET['borr2']."';")) {
+    }
+       header("location: administrar_canciones.php");
 
  }
-     header("location: administracion.php");
- }
+     
+ 
  if (isset($_GET["check"])) {
     unset($_SESSION['sujeto']);
      header("location: administracion.php");
  } 
-header("location: usuario.php");
  
 ?>
