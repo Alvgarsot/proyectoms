@@ -41,7 +41,7 @@ $connection = new mysqli($db_host, $db_user, $db_password, $db_name);
 <p>Duración: <input type='time' name="durcancion" value='' step="1" required></input></p>
 <p>Canción a subir: <INPUT TYPE="HIDDEN" NAME="MAX_FILE_SIZE" VALUE="10002400">					
 								<input type="file" name="cancionl" value="examinar" required></input></p>
-<p><button value="Enviar" type='submit' name="enviar" >Editar</button> </p>
+<p><button value="Enviar" type='submit' name="enviar" >Subir</button> </p>
           </form>
                </div>
       <div class="pie"><p>En esta zona puedes administrar las canciones, pudiendo borrarlas, editarlas y subirlas</p></div>

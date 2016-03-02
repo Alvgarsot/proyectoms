@@ -498,6 +498,7 @@ color: white;
 }
 table {
 width: 100%;
+   overflow: scroll; 
 
 }
 table th {
@@ -510,6 +511,7 @@ table td {
 width: 20%;
 height: 30px;
 }
+
 .tablaadm {
 float: left;
 margin-top: 40px;
@@ -520,6 +522,7 @@ background-color: #9FA8DA;
 height: inherit;
     overflow: scroll;
     margin-bottom: 5px;
+    margin-bottom: 100px;
 }
 /* ----------------------------- ESTILOS PARA LA ZONA DE EDICIÓN DE LISTAS (ADMINISTRACIÓN) ----------------------- */
 .cancont2 {

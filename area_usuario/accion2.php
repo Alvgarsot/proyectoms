@@ -76,7 +76,7 @@ if (isset($_GET["borr2"])) {
          /* ------------------ BORRAR CANCIONES DE SU LISTA PRIMERO (AL NO PONER ON DELETE CASCADE) ----------------- */
         
     if($result4=$connection->query("DELETE FROM forma
-WHERE id_cancionfk2='".$z."';")) {
+WHERE id_cancionfk2='".$_GET["borr2"]."';")) {
     
 }
          /* ------------------ BORRAR CANCIONES DESPUES (AL NO PONER ON DELETE CASCADE) ----------------- */
